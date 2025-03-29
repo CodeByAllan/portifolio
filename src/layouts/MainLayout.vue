@@ -2,32 +2,31 @@
   <q-layout view="lHh Lpr lFf">
     <q-header>
       <q-toolbar>
-        <q-toolbar-title class=" q-toolbar-title ">
-          Allan<span>Pereira</span>
-        </q-toolbar-title>
-        <q-btn flat size="lg" @click="toggleDrawer" icon="menu" v-if="$q.screen.width < 600" color="primary" />
+        <q-toolbar-title class="q-toolbar-title"> Allan<span>Pereira</span> </q-toolbar-title>
+        <q-btn
+          flat
+          size="lg"
+          @click="toggleDrawer"
+          icon="menu"
+          v-if="$q.screen.width < 600"
+          color="primary"
+        />
         <q-drawer class="drawer" tra dark elevated v-model="drawerOpen" side="right" overlay>
           <q-list>
             <q-item @click="toggleDrawer" clickable to="/">
-              <q-item-section>
-                Home
-              </q-item-section>
+              <q-item-section> Home </q-item-section>
+            </q-item>
+            <q-item @click="toggleDrawer" clickable to="/about">
+              <q-item-section> About </q-item-section>
             </q-item>
             <q-item @click="toggleDrawer" clickable to="#">
-              <q-item-section>
-                About
-              </q-item-section>
-            </q-item>
-            <q-item @click="toggleDrawer" clickable to="#">
-              <q-item-section>
-                Contact
-              </q-item-section>
+              <q-item-section> Contact </q-item-section>
             </q-item>
           </q-list>
         </q-drawer>
         <div class="q-mr-md" v-if="$q.screen.width >= 600">
-          <q-btn class="nav-item " flat label="Home" to="/" color="primary" />
-          <q-btn class="nav-item" flat label="About" to="#" color="primary" />
+          <q-btn class="nav-item" flat label="Home" to="/" color="primary" />
+          <q-btn class="nav-item" flat label="About" to="/about" color="primary" />
           <q-btn class="nav-item" flat label="Contact" to="#" color="primary" />
         </div>
       </q-toolbar>
@@ -87,6 +86,8 @@ function toggleDrawer() {
   color: white;
   transform: scale(1.1);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 </style>

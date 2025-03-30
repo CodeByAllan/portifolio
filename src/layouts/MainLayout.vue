@@ -2,32 +2,28 @@
   <q-layout view="lHh Lpr lFf">
     <q-header>
       <q-toolbar>
-        <q-toolbar-title class="q-toolbar-title"> Allan<span>Pereira</span> </q-toolbar-title>
-        <q-btn
-          flat
-          size="lg"
-          @click="toggleDrawer"
-          icon="menu"
-          v-if="$q.screen.width < 600"
-          color="primary"
-        />
-        <q-drawer class="drawer" tra dark elevated v-model="drawerOpen" side="right" overlay>
+        <q-toolbar-title class="q-toolbar-title q-ml-md">
+          Allan<span>Pereira</span>
+        </q-toolbar-title>
+        <q-btn flat size="xl" @click="toggleDrawer" icon="menu" v-if="isMobile" color="primary" />
+        <q-drawer dark elevated v-model="drawerOpen" side="right" overlay>
           <q-list>
-            <q-item @click="toggleDrawer" clickable to="/">
-              <q-item-section> Home </q-item-section>
-            </q-item>
-            <q-item @click="toggleDrawer" clickable to="/about">
-              <q-item-section> About </q-item-section>
-            </q-item>
-            <q-item @click="toggleDrawer" clickable to="#">
-              <q-item-section> Contact </q-item-section>
-            </q-item>
+            <MenuItem
+              v-for="item in MenuItems"
+              :key="item.link"
+              :event="toggleDrawer"
+              :link="item.link"
+              :title="item.title"
+            />
           </q-list>
         </q-drawer>
-        <div class="q-mr-md" v-if="$q.screen.width >= 600">
-          <q-btn class="nav-item" flat label="Home" to="/" color="primary" />
-          <q-btn class="nav-item" flat label="About" to="/about" color="primary" />
-          <q-btn class="nav-item" flat label="Contact" to="#" color="primary" />
+        <div class="row q-mr-md q-pa-md" v-if="!isMobile">
+          <MenuItem
+            v-for="item in MenuItems"
+            :key="item.link"
+            :link="item.link"
+            :title="item.title"
+          />
         </div>
       </q-toolbar>
     </q-header>
@@ -38,13 +34,36 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
+import MenuItem from 'src/components/MenuItem.vue';
+import { useQuasar } from 'quasar';
+
+const MenuItems = [
+  { title: 'Home', link: '/' },
+  { title: 'About', link: '/about' },
+  { title: 'Contact', link: '' },
+];
 
 const drawerOpen = ref(false);
+const isMobile = ref(false);
 
 function toggleDrawer() {
   drawerOpen.value = !drawerOpen.value;
 }
+const $q = useQuasar();
+
+onMounted(() => {
+  isMobile.value = $q.screen.lt.md;
+});
+watch(
+  () => $q.screen.lt.md,
+  (isMobileState) => {
+    isMobile.value = isMobileState;
+    if (!isMobileState) {
+      drawerOpen.value = false;
+    }
+  },
+);
 </script>
 
 <style scoped>
@@ -73,21 +92,5 @@ function toggleDrawer() {
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0%;
-}
-
-.nav-item {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 100%;
-  letter-spacing: 0%;
-}
-
-.nav-item:hover {
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
   <q-page>
-    <div class="q-gutter-lg row items-center justify-evenly">
+    <div class="q-gutter-lg row">
       <div class="col q-ml-xl q-mt-xl">
         <div class="row q-pl-sm q-mt-sm">
           <div class="text-subtitle1">Hello, I’m Allan,</div>
         </div>
-        <div class="row q-mt-md">
+        <div class="row q-ma-md">
           <div class="text-h1">Full Stack Developer</div>
         </div>
       </div>

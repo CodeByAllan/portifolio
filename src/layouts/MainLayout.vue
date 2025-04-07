@@ -8,22 +8,12 @@
         <q-btn flat size="xl" @click="toggleDrawer" icon="menu" v-if="isMobile" color="primary" />
         <q-drawer dark elevated v-model="drawerOpen" side="right" overlay>
           <q-list>
-            <MenuItem
-              v-for="item in MenuItems"
-              :key="item.link"
-              :event="toggleDrawer"
-              :link="item.link"
-              :title="item.title"
-            />
+            <MenuItem v-for="item in MenuItems" :key="item.link" :event="toggleDrawer" :link="item.link"
+              :title="item.title" />
           </q-list>
         </q-drawer>
         <div class="row q-mr-md q-pa-md" v-if="!isMobile">
-          <MenuItem
-            v-for="item in MenuItems"
-            :key="item.link"
-            :link="item.link"
-            :title="item.title"
-          />
+          <MenuItem v-for="item in MenuItems" :key="item.link" :link="item.link" :title="item.title" />
         </div>
       </q-toolbar>
     </q-header>
@@ -41,7 +31,7 @@ import { useQuasar } from 'quasar';
 const MenuItems = [
   { title: 'Home', link: '/' },
   { title: 'About', link: '/about' },
-  { title: 'Contact', link: '' },
+  { title: 'Contact', link: '/contact' },
 ];
 
 const drawerOpen = ref(false);

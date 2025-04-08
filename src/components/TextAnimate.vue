@@ -1,13 +1,13 @@
 <template>
-  <h1 class="text-xl">
+  <h1 class="text-xl" ref="animatedText">
     <span class="animated-letter" v-for="(letter, index) in letters" :key="index">{{
       letter
-    }}</span>
+      }}</span>
   </h1>
 </template>
 
 <script setup lang="ts">
-import { onMounted, defineProps, computed } from 'vue';
+import { onMounted, defineProps, computed, ref } from 'vue';
 import { animate } from 'animejs';
 
 const props = defineProps({
@@ -17,21 +17,28 @@ const props = defineProps({
   },
 });
 
+const animatedText = ref<HTMLElement | null>(null);
+
 const letters = computed(() => {
   return props.text.split('');
 });
 
-onMounted(() => {
-  animate('.animated-letter', {
-    y: [
-      { to: '-2.75rem', ease: 'easeOutElastic(1, .5)', duration: 400 },
-      { to: 0, ease: 'outBounce', duration: 800, delay: 0 },
-    ],
-    delay: (_, i) => i * 50,
-    ease: 'easeInOutSine',
+const startAnimation = () => {
+  if (animatedText.value) {
+    animate('.animated-letter', {
+      y: [
+        { to: '-2.75rem', ease: 'easeOutElastic(1, .5)', duration: 400 },
+        { to: 0, ease: 'outBounce', duration: 800, delay: 0 },
+      ],
+      delay: (_, i) => i * 50,
+      ease: 'easeInOutSine',
+      loop: true,
+    });
+  }
+};
 
-    loop: true,
-  });
+onMounted(() => {
+  startAnimation();
 });
 </script>
 

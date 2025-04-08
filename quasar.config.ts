@@ -36,7 +36,11 @@ export default defineConfig((/* ctx */) => {
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
       },
-      env: { API_CONTACT_URL: 'https://api.codebyallan.com.br' },
+      env: {
+        API_CONTACT_URL: 'https://api.codebyallan.com.br',
+        ABOUT_URL:
+          'https://raw.githubusercontent.com/CodeByAllan/portifolio_data/refs/heads/main/about_paragraphs.json',
+      },
       typescript: {
         strict: true,
         vueShim: true,

@@ -2,41 +2,33 @@
   <q-page>
     <div class="q-gutter-lg row">
       <div class="col q-ml-xl q-mt-xl">
-        <div class="row q-pl-sm q-mt-sm">
+        <div class="row">
           <div class="text-subtitle1">Hello, I’m Allan,</div>
         </div>
-        <div class="row q-ma-md">
-          <div class="text-h1">Full Stack Developer</div>
+
+        <div class="q-mt-md">
+          <TextAnimate text="Full Stack" />
+          <TextAnimate text="Developer" />
         </div>
       </div>
     </div>
   </q-page>
 </template>
+<script lang="ts" setup>
+import TextAnimate from 'src/components/TextAnimate.vue';
+</script>
 <style scoped>
 .text-subtitle1 {
-  font-weight: 500;
-  font-size: 28px;
+  font-weight: 600;
+  font-size: 38px;
   line-height: 100%;
   letter-spacing: 0%;
 }
 
-.text-h1 {
-  font-weight: 800;
-  font-size: 100px;
-  line-height: 100px;
-  letter-spacing: 0%;
-  vertical-align: bottom;
-  color: var(--q-primary);
-}
-
 @media (max-width: 600px) {
-  .text-h1 {
-    font-size: 48px;
-    line-height: 50px;
-  }
-
   .text-subtitle1 {
-    font-size: 20px;
+    font-size: 28px;
+    margin-bottom: 20px;
   }
 }
 </style>

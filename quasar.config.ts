@@ -40,6 +40,8 @@ export default defineConfig((/* ctx */) => {
         API_CONTACT_URL: 'https://api.codebyallan.com.br',
         ABOUT_URL:
           'https://raw.githubusercontent.com/CodeByAllan/portifolio_data/refs/heads/main/about_paragraphs.json',
+        PROJECTS_URL:
+          'https://raw.githubusercontent.com/CodeByAllan/portifolio_data/refs/heads/main/projects.json',
       },
       typescript: {
         strict: true,

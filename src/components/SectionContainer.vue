@@ -20,7 +20,6 @@ defineProps({
 <style scoped>
 .section-container {
   width: 90%;
-  padding: 24px;
   text-align: center;
 }
 

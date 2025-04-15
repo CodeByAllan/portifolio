@@ -1,0 +1,1 @@
+import{_ as s,P as c,H as o,Q as e}from"./index-PBuB9DoH.js";const r={},n={class:"fullscreen text-white text-center q-pa-md flex flex-center"};function a(d,t){return o(),c("div",n,t[0]||(t[0]=[e("div",null,[e("div",{class:"code"}," 404 "),e("div",{class:"text-h2"}," Oops. Nothing here... ")],-1)]))}const _=s(r,[["render",a],["__scopeId","data-v-cc40a09c"]]);export{_ as default};
